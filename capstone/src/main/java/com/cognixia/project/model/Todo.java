@@ -42,9 +42,7 @@ public class Todo {
 	@Column(name = "todo_status")
 	private boolean status;
 	
-	public Todo() {
-		super();
-	}
+	protected Todo() { super(); }
 	
 	public Todo(int id, String description, String user, LocalDate targetDate, boolean status) {
 		super();

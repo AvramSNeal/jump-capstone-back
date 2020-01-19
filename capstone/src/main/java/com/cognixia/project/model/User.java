@@ -22,14 +22,14 @@ public class User {
 	
 	@Email
 	@NotNull
-	@Column(name = "user_email")
+	@Column(name = "user_email", unique = true)
 	private String email;
 	
 	@NotNull
 	@Column(name = "user_enabled")
 	private boolean	enabled;
 	
-	public User() {super();}
+	protected User() { super();}
 
 	public User(@NotNull String username, @NotNull String password, @Email @NotNull String email,
 			@NotNull boolean enabled) {
