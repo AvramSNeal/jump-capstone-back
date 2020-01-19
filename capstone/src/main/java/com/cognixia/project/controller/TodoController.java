@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,28 +12,36 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.cognixia.project.model.Todo;
 import com.cognixia.services.TodoService;
+import com.cognixia.util.RestPreconditions;
 
-@RestController
 @SessionAttributes("name")
+@RestController
+@RequestMapping("/todo")
 public class TodoController {
 	
 	@Autowired
-	TodoService service;
+	private TodoService service;
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -41,14 +50,32 @@ public class TodoController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}
 	
+	@GetMapping
+	public List<Todo> listAllTodos() throws SQLException {
+		return service.listAllTodos();
+	}
+	
+	@GetMapping("/{id}")
+	public Todo findById(@PathVariable("id") Long id) throws SQLException {
+		return RestPreconditions.checkNotNull(service.getTodoById(id));
+	}
+	
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Todo addTodo(@RequestBody Todo resource) throws SQLException {
+		
+		RestPreconditions.checkNotNull(resource);
+		return service.addTodo(resource);		
+	}
+	
 	@RequestMapping(value="/listtodos", method=RequestMethod.GET)
 	public String listTodos(ModelMap model) throws SQLException {
 		
 		String name = getLoggedInUser(model);
 		
 		model.put("username", name);
-		model.put("todos", service.listAllTodos(name));
-		model.addAttribute("todos", service.listAllTodos(name));
+		model.put("todos", service.listAllTodos());
+		model.addAttribute("todos", service.listAllTodos());
 		
 		return "listtodos";
 	}
@@ -74,14 +101,14 @@ public class TodoController {
 	}
 	
 	@RequestMapping(value="/deletetodo", method=RequestMethod.GET)
-	public String deleteTodo(@RequestParam int todoId) throws SQLException {
+	public String deleteTodo(@RequestParam Long todoId) throws SQLException {
 		
 		service.deleteTodo(todoId);
 		return "redirect:/listtodos";
 	}
 	
 	@RequestMapping(value="/edittodo", method=RequestMethod.GET)
-	public String showEditTodo(ModelMap model, @RequestParam int todoId) throws SQLException {
+	public String showEditTodo(ModelMap model, @RequestParam Long todoId) throws SQLException {
 		
 		Todo todo = service.getTodoById(todoId);
 		model.addAttribute("todo", todo);

@@ -1,5 +1,6 @@
 package com.cognixia.project.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -14,9 +15,14 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.DateSerializer;
+
 @Entity
 @Table(name = "todo_table")
-public class Todo {
+public class Todo implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -77,6 +83,7 @@ public class Todo {
 		this.user = user;
 	}
 
+	@JsonSerialize(using = DateSerializer.class)
 	public LocalDate getTargetDate() {
 		return targetDate;
 	}

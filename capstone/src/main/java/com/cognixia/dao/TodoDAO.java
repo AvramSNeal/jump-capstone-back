@@ -16,14 +16,14 @@ public class TodoDAO {
 	TodoRepository repository;
 
 	// CREATE
-	public void addTodo(Todo todo) throws SQLException {
-		repository.save(todo);
+	public Todo addTodo(Todo todo) throws SQLException {
+		return repository.save(todo);
 	}
 
 	// READ
-	public List<Todo> listAllTodos(String name) throws SQLException {
+	public List<Todo> listAllTodos() throws SQLException {
 		List<Todo> todos = null;
-		todos = repository.findTodoByName(name);
+		todos = repository.findAll();
 		return todos;
 	}
 

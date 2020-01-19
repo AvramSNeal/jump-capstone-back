@@ -19,20 +19,20 @@ public class TodoService {
 	TodoDAO todoDAO;
 
 	// CREATE
-	public void addTodo(Todo todo) throws SQLException {
-		todoDAO.addTodo(todo);
+	public Todo addTodo(Todo todo) throws SQLException {
+		return todoDAO.addTodo(todo);
 	}
 
 	// READ ALL
-	public List<Todo> listAllTodos(String name) throws SQLException {
+	public List<Todo> listAllTodos() throws SQLException {
 
 		List<Todo> todos = null;
-		todos = todoDAO.listAllTodos(name);
+		todos = todoDAO.listAllTodos();
 		return todos;
 	}
 
 	// READ BY ONE TODO BY ID
-	public Todo getTodoById(int todoId) throws SQLException {
+	public Todo getTodoById(Long todoId) throws SQLException {
 
 		Todo todo = todoDAO.getTodoById(todoId);	
 		return todo;
@@ -44,7 +44,7 @@ public class TodoService {
 	}
 
 	// DELETE
-	public void deleteTodo(int todoId) throws SQLException {	
+	public void deleteTodo(Long todoId) throws SQLException {	
 		todoDAO.deleteTodo(todoId);
 	}	
 }
