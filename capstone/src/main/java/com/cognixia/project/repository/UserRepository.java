@@ -1,8 +1,7 @@
 package com.cognixia.project.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.cognixia.project.model.User;
@@ -10,9 +9,6 @@ import com.cognixia.project.model.User;
 @CrossOrigin("*")
 public interface UserRepository extends JpaRepository<User, Long> {
 	
-	List<User> findUserByName(String username);
-	
-	User findById(long id);
-	
-
+	@Query(value = "SELECT user_username FROM users WHERE user_username = ?1", nativeQuery = true)
+	public User getUserByUsername(String username);
 }
