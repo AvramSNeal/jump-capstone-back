@@ -25,7 +25,7 @@ public class UserDAO {
 	}
 
 	// FIND USER BY ID
-	public User findById(Long id) {
+	public User findById(int id) {
 		return repository.findById(id).get();
 	}
 
@@ -35,7 +35,7 @@ public class UserDAO {
 	}
 
 	// DELETE USER
-	public void deleteById(Long id) {
+	public void deleteById(int id) {
 		repository.deleteById(id);
 	}
 }

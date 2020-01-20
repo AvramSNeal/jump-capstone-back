@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.cognixia.project.model.User;
 
 @CrossOrigin("*")
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Integer> {
 	
 	@Query(value = "SELECT user_username FROM users WHERE user_username = ?1", nativeQuery = true)
 	public User getUserByUsername(String username);
