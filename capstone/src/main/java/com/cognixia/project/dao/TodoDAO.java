@@ -25,12 +25,12 @@ public class TodoDAO {
 	}
 	
 	// FIND TODO BY ID
-	public Todo findById(int id) {
+	public Todo findById(Long id) {
 		return repository.findById(id).get();
 	}
 	
 	// DELETE TODO
-	public void deleteById(int id) {
+	public void deleteById(Long id) {
 		repository.deleteById(id);
 	}
 

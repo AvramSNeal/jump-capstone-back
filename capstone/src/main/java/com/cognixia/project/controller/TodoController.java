@@ -45,7 +45,7 @@ public class TodoController {
 	
 	// GET TODO BY ID
 	@GetMapping("/todo/{id}")
-	public ResponseEntity<Todo> getTodoById(@PathVariable (value="id") int id) {
+	public ResponseEntity<Todo> getTodoById(@PathVariable (value="id") Long id) {
 		
 		Todo todo = todoDAO.findById(id);
 		
@@ -82,7 +82,7 @@ public class TodoController {
 	
 	// DELETE TODO BY ID
 	@DeleteMapping("/todo/{id}")
-	public ResponseEntity<Todo> deleteTodo(@PathVariable (value = "id") int id) {
+	public ResponseEntity<Todo> deleteTodo(@PathVariable (value = "id") Long id) {
 		
 		Todo todo = todoDAO.findById(id);
 		

@@ -15,10 +15,6 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
-
 @Entity
 @Table(name = "todo_table")
 public class Todo implements Serializable {
@@ -28,7 +24,7 @@ public class Todo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "todo_id")
-	private int id;
+	private Long id;
 
 	@Size(min = 5, message="The description should be at least 5 characters long.")
 	@NotNull
@@ -51,7 +47,7 @@ public class Todo implements Serializable {
 	
 	protected Todo() { super(); }
 	
-	public Todo(int id, String description, String user, LocalDate targetDate, boolean status) {
+	public Todo(Long id, String description, String user, LocalDate targetDate, boolean status) {
 		super();
 		this.id = id;
 		this.description = description;
@@ -60,11 +56,11 @@ public class Todo implements Serializable {
 		this.status = status;
 	}
 
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -111,7 +107,7 @@ public class Todo implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + id;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + (status ? 1231 : 1237);
 		result = prime * result + ((targetDate == null) ? 0 : targetDate.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
@@ -132,7 +128,10 @@ public class Todo implements Serializable {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (id != other.id)
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
 			return false;
 		if (status != other.status)
 			return false;
