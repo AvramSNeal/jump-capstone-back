@@ -56,6 +56,8 @@ public class TodoController {
 			throw new Exception("id-" + id);
 		}
 		
+		// SOmething
+		
 		EntityModel<Todo> resource = new EntityModel<Todo>(todo.get());		
 		WebMvcLinkBuilder linkTo = WebMvcLinkBuilder
 				.linkTo(WebMvcLinkBuilder
