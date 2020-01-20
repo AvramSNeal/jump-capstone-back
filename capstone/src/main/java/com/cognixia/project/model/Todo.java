@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 
@@ -83,7 +84,6 @@ public class Todo implements Serializable {
 		this.user = user;
 	}
 
-	@JsonSerialize(using = DateSerializer.class)
 	public LocalDate getTargetDate() {
 		return targetDate;
 	}
