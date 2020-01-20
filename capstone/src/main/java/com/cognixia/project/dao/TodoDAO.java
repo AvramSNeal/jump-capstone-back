@@ -1,6 +1,7 @@
 package com.cognixia.project.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,8 +26,8 @@ public class TodoDAO {
 	}
 	
 	// FIND TODO BY ID
-	public Todo findById(Long id) {
-		return repository.findById(id).get();
+	public Optional<Todo> findById(Long id) {
+		return repository.findById(id);
 	}
 	
 	// DELETE TODO

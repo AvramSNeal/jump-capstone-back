@@ -3,11 +3,14 @@ package com.cognixia.project.controller;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -45,16 +48,24 @@ public class TodoController {
 	
 	// GET TODO BY ID
 	@GetMapping("/todo/{id}")
-	public ResponseEntity<Todo> getTodoById(@PathVariable (value="id") Long id) {
+	public EntityModel<Todo> getTodoById(@PathVariable (value="id") Long id) throws Exception {
 		
-		Todo todo = todoDAO.findById(id);
+		Optional<Todo> todo = todoDAO.findById(id);
 		
-		if(todo == null) {
-			return ResponseEntity.notFound().build();
-		}	
-		return ResponseEntity.ok().body(todo);
+		if(!todo.isPresent()) {
+			throw new Exception("id-" + id);
+		}
+		
+		EntityModel<Todo> resource = new EntityModel<Todo>(todo.get());		
+		WebMvcLinkBuilder linkTo = WebMvcLinkBuilder
+				.linkTo(WebMvcLinkBuilder
+						.methodOn(this.getClass())
+						.getAllTodos());
+		
+		resource.add(linkTo.withRel("all-todos"));
+		return resource;
 	}
-	
+	/*
 	// CREATE A TODO
 	@PostMapping("/todo")
 	public Todo save(@RequestBody Todo todo) {		
@@ -93,5 +104,5 @@ public class TodoController {
 		todoDAO.deleteById(todo.getId());
 		
 		return ResponseEntity.ok().build();
-	}
+	}*/
 }
