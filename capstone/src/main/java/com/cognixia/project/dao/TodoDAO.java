@@ -17,7 +17,7 @@ public class TodoDAO {
 	
 	// SAVE TODO 
 	public Todo save(Todo todo) {
-		return repository.save(todo);
+		return repository.saveAndFlush(todo);
 	}
 	
 	// FIND ALL TODOS

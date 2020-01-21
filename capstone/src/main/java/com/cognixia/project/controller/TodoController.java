@@ -1,5 +1,6 @@
 package com.cognixia.project.controller;
 
+import java.net.URI;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -22,9 +23,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.cognixia.project.dao.TodoDAO;
 import com.cognixia.project.model.Todo;
+import com.cognixia.project.repository.TodoRepository;
 
 @RestController
 @RequestMapping("/services")
@@ -32,6 +35,9 @@ public class TodoController {
 	
 	@Autowired
 	TodoDAO todoDAO;
+	
+	@Autowired
+	private TodoRepository todoRepository;
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -73,7 +79,17 @@ public class TodoController {
 	public Todo save(@RequestBody Todo todo) {		
 		return todoDAO.save(todo);		
 	}
+	*/
+	@PostMapping("/todos")
+	public ResponseEntity<Todo> createTodo(@RequestBody Todo todo){
+		Todo newTodo = todoRepository.save(todo);
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(newTodo.getId()).toUri();
+		
+		return ResponseEntity.created(location).build();
+	}
 	
+	/*
 	// UPDATE A TODO
 	@PutMapping("/todo/{id}")
 	public ResponseEntity<Todo> updateTodo(@PathVariable (value="id") int id, 
@@ -93,6 +109,20 @@ public class TodoController {
 		return ResponseEntity.ok().body(newTodo);	
 	}
 	
+	*/
+	
+	@PutMapping("/todos/{id}")
+	public ResponseEntity<Object> updateTodo(@RequestBody Todo todo, @PathVariable long id){
+		Optional<Todo> todoOptional = todoDAO.findById(id);
+		if(!todoOptional.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		todo.setId(id);
+		todoDAO.save(todo);
+		return ResponseEntity.noContent().build();
+	}
+	
+	/*
 	// DELETE TODO BY ID
 	@DeleteMapping("/todo/{id}")
 	public ResponseEntity<Todo> deleteTodo(@PathVariable (value = "id") Long id) {
@@ -107,4 +137,10 @@ public class TodoController {
 		
 		return ResponseEntity.ok().build();
 	}*/
+	
+	@DeleteMapping("/todos/{id}")
+	public void deleteStudent(@PathVariable long id) {
+		todoDAO.deleteById(id);
+	}
 }
+

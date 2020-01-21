@@ -60,3 +60,40 @@
 2020-01-20 13:25:19,295 [Worker-48: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2020-01-20 13:25:19,297 [Worker-48: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2020-01-20 13:25:19,297 [Worker-48: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\dev\jump-capstone\capstone\src\test\resources
+2020-01-21 11:39:36,536 [Worker-163: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.cognixia.project:capstone:0.0.1-SNAPSHOT @ C:\dev\jump-capstone\capstone\pom.xml.
+2020-01-21 11:39:38,718 [Worker-163: Building workspace] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-hateoas/2.2.3.RELEASE/spring-boot-starter-hateoas-2.2.3.RELEASE.pom
+2020-01-21 11:39:38,875 [Worker-163: Building workspace] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-hateoas/2.2.3.RELEASE/spring-boot-starter-hateoas-2.2.3.RELEASE.pom
+2020-01-21 11:39:38,986 [Worker-163: Building workspace] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/1.0.3.RELEASE/spring-hateoas-1.0.3.RELEASE.pom
+2020-01-21 11:39:39,114 [Worker-163: Building workspace] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/1.0.3.RELEASE/spring-hateoas-1.0.3.RELEASE.pom
+2020-01-21 11:39:39,242 [Worker-163: Building workspace] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-hateoas/2.2.3.RELEASE/spring-boot-starter-hateoas-2.2.3.RELEASE.jar
+2020-01-21 11:39:39,301 [Worker-163: Building workspace] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-hateoas/2.2.3.RELEASE/spring-boot-starter-hateoas-2.2.3.RELEASE.jar
+2020-01-21 11:39:39,343 [Worker-163: Building workspace] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/1.0.3.RELEASE/spring-hateoas-1.0.3.RELEASE.jar
+2020-01-21 11:39:39,667 [Worker-163: Building workspace] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/1.0.3.RELEASE/spring-hateoas-1.0.3.RELEASE.jar
+2020-01-21 11:39:41,469 [Worker-163: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-01-21 11:39:41,471 [Worker-163: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-01-21 11:39:41,482 [Worker-163: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-01-21 11:39:41,499 [Worker-163: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-01-21 11:39:41,499 [Worker-163: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\dev\jump-capstone\capstone\src\test\resources
+2020-01-21 11:39:42,591 [Worker-168: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-01-21 11:39:42,593 [Worker-168: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-01-21 11:39:42,597 [Worker-168: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-01-21 11:39:42,600 [Worker-168: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-01-21 11:39:42,600 [Worker-168: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\dev\jump-capstone\capstone\src\test\resources
+2020-01-21 11:39:42,774 [Worker-163: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-hateoas/2.2.3.RELEASE/spring-boot-starter-hateoas-2.2.3.RELEASE-sources.jar
+2020-01-21 11:39:42,925 [Worker-163: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-hateoas/2.2.3.RELEASE/spring-boot-starter-hateoas-2.2.3.RELEASE-sources.jar
+2020-01-21 11:39:43,001 [Worker-163: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.springframework.boot:spring-boot-starter-hateoas:2.2.3.RELEASE
+2020-01-21 11:39:43,293 [Worker-163: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloading https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/1.0.3.RELEASE/spring-hateoas-1.0.3.RELEASE-sources.jar
+2020-01-21 11:39:43,526 [Worker-163: Download sources and javadoc] INFO  o.e.m.c.i.e.AbstractTransferListenerAdapter - Downloaded https://repo.maven.apache.org/maven2/org/springframework/hateoas/spring-hateoas/1.0.3.RELEASE/spring-hateoas-1.0.3.RELEASE-sources.jar
+2020-01-21 11:39:43,622 [Worker-163: Download sources and javadoc] INFO  o.e.m.j.internal.DownloadSourcesJob - Downloaded sources for org.springframework.hateoas:spring-hateoas:1.0.3.RELEASE
+2020-01-21 11:43:05,751 [Worker-6: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-01-21 11:43:12,862 [Worker-0: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.cognixia.project:capstone:0.0.1-SNAPSHOT @ C:\dev\jump-capstone\capstone\pom.xml.
+2020-01-21 11:43:14,366 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-01-21 11:43:14,370 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-01-21 11:43:14,385 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 2 resources
+2020-01-21 11:43:14,388 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-01-21 11:43:14,388 [Worker-0: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\dev\jump-capstone\capstone\src\test\resources
+2020-01-21 11:43:16,501 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-01-21 11:43:16,502 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2020-01-21 11:43:16,505 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2020-01-21 11:43:16,507 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2020-01-21 11:43:16,508 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\dev\jump-capstone\capstone\src\test\resources
