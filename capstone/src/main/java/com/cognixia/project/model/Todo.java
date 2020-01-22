@@ -22,7 +22,7 @@ public class Todo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "todo_id")
 	private Long id;
 
@@ -40,6 +40,10 @@ public class Todo implements Serializable {
 	@DateTimeFormat(pattern="MM/dd/yyyy")
 	@Column(name = "todo_date")
 	private LocalDate targetDate;
+	
+	@NotNull
+	@Column(name = "todo_priority")
+	private int priority;
 	
 	@NotNull
 	@Column(name = "todo_status")
@@ -96,56 +100,6 @@ public class Todo implements Serializable {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Todo [id=" + id + ", description=" + description + ", user=" + user + ", targetDate=" + targetDate
-				+ ", status=" + status + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + (status ? 1231 : 1237);
-		result = prime * result + ((targetDate == null) ? 0 : targetDate.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Todo other = (Todo) obj;
-		if (description == null) {
-			if (other.description != null)
-				return false;
-		} else if (!description.equals(other.description))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (status != other.status)
-			return false;
-		if (targetDate == null) {
-			if (other.targetDate != null)
-				return false;
-		} else if (!targetDate.equals(other.targetDate))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
-			return false;
-		return true;
-	}
+	
 }
 
