@@ -14,10 +14,27 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.hateoas.RepresentationModel;
 
+/**
+ * @author Thomas White
+ * 
+ * Model: Todo model that sets the mapping up for the spring data jpa
+ * 
+ * @Entity: A lightweight persistence domain object annotation
+ * @Table: Allows you to specify the details of the table that will be used to persist the entity in the database
+ * @Id: Specifies the primary key of an entity
+ * @GeneratedValue: Provides for the specification of generation strategies for the values of primary keys
+ * @Column: Used to specify the mapped column for a persistent property or field
+ * @NotNull: Let you check nullability of a variable
+ * @Size: Makes the bean independent of JPA and its vendors such as Hibernate while checking constraints
+ * @FutureOrPresent: The value of the field or property must be a date or time in present or future.
+ * @DateTimeFormat:Declares that a field or method parameter should be formatted as a date or time.
+ * 
+ */
 @Entity
 @Table(name = "todo_table")
-public class Todo implements Serializable {
+public class Todo extends RepresentationModel<Todo> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -51,12 +68,13 @@ public class Todo implements Serializable {
 	
 	protected Todo() { super(); }
 	
-	public Todo(Long id, String description, String user, LocalDate targetDate, boolean status) {
+	public Todo(Long id, String description, String user, LocalDate targetDate, int priority, boolean status) {
 		super();
 		this.id = id;
 		this.description = description;
 		this.user = user;
 		this.targetDate = targetDate;
+		this.priority = priority;
 		this.status = status;
 	}
 
@@ -91,6 +109,14 @@ public class Todo implements Serializable {
 	public void setTargetDate(LocalDate targetDate) {
 		this.targetDate = targetDate;
 	}
+	
+	public int getPriority() {
+		return priority;
+	}
+	
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
 
 	public boolean isStatus() {
 		return status;
@@ -100,6 +126,59 @@ public class Todo implements Serializable {
 		this.status = status;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Todo [id=" + id + ", description=" + description + ", user=" + user + ", targetDate=" + targetDate
+				+ ", priority=" + priority + ", status=" + status + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + priority;
+		result = prime * result + (status ? 1231 : 1237);
+		result = prime * result + ((targetDate == null) ? 0 : targetDate.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Todo other = (Todo) obj;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (priority != other.priority)
+			return false;
+		if (status != other.status)
+			return false;
+		if (targetDate == null) {
+			if (other.targetDate != null)
+				return false;
+		} else if (!targetDate.equals(other.targetDate))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
 }
 

@@ -9,6 +9,14 @@ import org.springframework.stereotype.Service;
 import com.cognixia.project.model.Todo;
 import com.cognixia.project.repository.TodoRepository;
 
+
+/**
+ * @author Thomas White
+ * 
+ * @Service: Specialization of the component annotation
+ * @Autowired: Allows Spring to resolve and inject collaborating beans into your bean
+ *
+ */
 @Service
 public class TodoDAO {
 	
@@ -18,6 +26,7 @@ public class TodoDAO {
 	// SAVE TODO 
 	public Todo save(Todo todo) {
 		return repository.save(todo);
+		
 	}
 	
 	// FIND ALL TODOS
