@@ -61,7 +61,6 @@ public class TodoController {
 
 	@Autowired
 	TodoDAO todoDAO;
-
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		// dd/MM/yyyy
@@ -115,7 +114,6 @@ public class TodoController {
 
 
 	}
-
 	// UPDATE A TODO
 	@PutMapping("/todos/{id}")
 	public ResponseEntity<?> updateTodo(@RequestBody Todo todo, @PathVariable long id){
@@ -133,5 +131,5 @@ public class TodoController {
 	public void deleteStudent(@PathVariable long id) {
 		todoDAO.deleteById(id);
 	}
-
 }
+
