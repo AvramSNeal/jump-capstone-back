@@ -83,18 +83,19 @@ public class TodoController {
 	}
 	
 	// GET ALL TODOS BY USER
-	@GetMapping("/todo/{user}")
+	@GetMapping("/todo/user/{user}")
 	public CollectionModel<EntityModel<Todo>> getTodoByUser(@PathVariable String user) {
 
-		List<EntityModel<Todo>> todos = repository.findAll().stream().filter(e -> e.getUser() == user)
+		List<EntityModel<Todo>> todos = repository.findAll().stream()
+				.filter(e -> e.getUser().equals(user))
 				.map(assembler::toModel)
 				.collect(Collectors.toList());
 
 		return new CollectionModel<EntityModel<Todo>>(todos,
-					WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder
+				WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder
 						.methodOn(TodoController.class).getAllTodos()).withSelfRel());		
+				
 	}
-
 
 	// GET TODO BY ID
 	@GetMapping("/todo/{id}")
