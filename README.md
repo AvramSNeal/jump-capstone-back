@@ -1,5 +1,5 @@
 # JuMP Capstone Back-End Application
-This is the Back-end application of Team **The Boys**' Java JuMP Capstone Project. It utilizes **Angular** for the front-end and **Spring Boot** for the back-end with **MySQL** as the database.
+This is the back-end application of Team **The Boys**' Java JuMP Capstone Project. It utilizes **Angular** for the front-end and **Spring Boot** for the back-end with **MySQL** as the database.
 
 ## Development server
 
