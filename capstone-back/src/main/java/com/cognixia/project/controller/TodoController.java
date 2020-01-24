@@ -43,7 +43,6 @@ import com.jayway.jsonpath.PathNotFoundException;
  * @InitBinder: Identifies methods which initialize the WebDataBinder
  * @Autowired: Allows Spring to resolve and inject collaborating beans into your bean
  * @GetMapping: Maps HTTP GET requests onto specific handler methods
- * 
  *
  */
 @RestController
@@ -82,7 +81,21 @@ public class TodoController {
 				WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder
 						.methodOn(TodoController.class).getAllTodos()).withSelfRel());		
 	}
+	
+	// GET ALL TODOS BY USER
+	@GetMapping("/todo/user/{user}")
+	public CollectionModel<EntityModel<Todo>> getTodoByUser(@PathVariable String user) {
 
+		List<EntityModel<Todo>> todos = repository.findAll().stream()
+				.filter(e -> e.getUser().equals(user))
+				.map(assembler::toModel)
+				.collect(Collectors.toList());
+
+		return new CollectionModel<EntityModel<Todo>>(todos,
+				WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder
+						.methodOn(TodoController.class).getAllTodos()).withSelfRel());		
+				
+	}
 
 	// GET TODO BY ID
 	@GetMapping("/todo/{id}")
@@ -93,7 +106,6 @@ public class TodoController {
 
 		return assembler.toModel(todo);
 	}
-
 
 
 	// CREATE A TODO
@@ -118,7 +130,7 @@ public class TodoController {
 	}
 
 	// UPDATE A TODO
-	@PutMapping("/todos/{id}")
+	@PutMapping("/todo/{id}")
 	public ResponseEntity<?> updateTodo(@RequestBody Todo todo, @PathVariable long id){
 		Optional<Todo> todoOptional = todoDAO.findById(id);
 		if(!todoOptional.isPresent()) {
@@ -130,7 +142,7 @@ public class TodoController {
 	}
 
 	// DELETE TODO BY ID
-	@DeleteMapping("/todos/{id}")
+	@DeleteMapping("/todo/{id}")
 	public void deleteStudent(@PathVariable long id) {
 		todoDAO.deleteById(id);
 	}
